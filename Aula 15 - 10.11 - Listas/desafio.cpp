@@ -51,6 +51,7 @@ int main(){
             cout << "Informe a quantidade do item: " << endl;
             cin >> aux.quantidade;
             lista.push_back(aux);
+            cout << endl;
             cout << "'" << lista.back().nome << "' Adicionado a lista com sucesso!\n" << endl;
         }
 
@@ -65,10 +66,12 @@ int main(){
             });
             size_t tamanhoDepois = lista.size();
             if(tamanhoAntes > tamanhoDepois){
-                cout << "'" << nomeRemover << "' Removido com sucesso!\n" << endl;
+                cout << endl;
+                cout << "'" << nomeRemover << "' Removido com sucesso!" << endl;
             }
             else{
-                cout << "'" << nomeRemover << "' Não foi encontrado na lista.\2n" << endl;
+                cout << endl;
+                cout << "'" << nomeRemover << "' Não foi encontrado na lista." << endl;
             }
         }
 
@@ -79,9 +82,14 @@ int main(){
             }
             else{
                 for(const auto &n: lista){
-                    cout << "Produto: " << n.nome << " Marca: " << n.marca << " Quantidade: " << n.quantidade << endl;
+                    cout << "Produto:" << n.nome << "  Marca:" << n.marca << "  Quantidade:" << n.quantidade << endl;
                 }
             }
+        }
+
+        else{
+            cout << endl;
+            cout << "Opção Inválida!" << endl;
         }
     }
 
