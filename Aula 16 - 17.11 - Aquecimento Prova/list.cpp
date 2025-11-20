@@ -127,5 +127,44 @@ struct list{
             p =p->next;
         }
     }
+    /*
+    Implementar na biblioteca "lista.cpp" a seguinte função:
+    void insere_apos(const std::string &s1, const std::string &s2)
+    Ela recebe duas strings (s1 e s2) e deve inserir na lista o valor passado em s1 após o primeiro nodo que
+    contêm o valor s2, se este existir. Caso o valor passado em s2 não esteja contido na lista, a função deve
+    inserir s1 no final da lista.
+    Exemplo: l.insere_apos("x", "y");
+    Neste exemplo, o valor "x" deve ser inserido na lista após "y", se existir "y" nesta lista. Se não existir nenhum
+    "y", inserir no final da lista. Se existir mais de um "y", inserir depois da primeira ocorrência. Utilize o arquivo
+    teste2.cpp para validar sua implementação
+    */
+    void insere_apos(const std::string &s1, const std::string &s2){
+        node *p = first; //p é o nosso "cursor" que procura s2
+        while(p != nullptr){
+            if(p->value == s2){ //Achamos o valor s2 (o nó alvo)
+                node *novo = new node; //Criamos o NOVO nó
+                novo->value = s1;
+                //Passo A: Configurar o NOVO nó
+                novo->next = p->next; //O próximo do novo é quem estava na frente do p
+                novo->previous = p;   //O anterior do novo é o próprio p  
+                //Passo B: Avisar o vizinho da FRENTE (se existir)
+                if(p->next != nullptr){
+                    p->next->previous = novo; //O vizinho da frente agora olha pra trás e vê o 'novo'
+                }
+                else{
+                    //Se p->next era nulo, significa que p era o Último.
+                    //Agora o 'novo' passa a ser o último.
+                    last = novo; 
+                }
+                //Passo C: Avisar o vizinho de TRÁS (o p)
+                p->next = novo; //O p agora aponta pra frente para o 'novo'
+                num_nodes++;
+                return; //IMPORTANTE: Se já inseriu, saia da função! Senão ele continua procurando.
+            }
+            p = p->next; //Continua procurando se não achou ainda
+        }
+        push_back(s1); //Se não achou o s2, ele insere no final usando a função push_back()
+    }
+
 };
 } //namespace upf

@@ -57,3 +57,90 @@ int main() {
 
     return 0;
 }
+
+/*
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+// FUNÇÃO 1: Verifica se um valor já existe no vetor
+// Retorna true se existir, false se não.
+bool valorExiste(const vector<double>& lista, double valor) {
+    auto it = find(lista.begin(), lista.end(), valor);
+    return it != lista.end();
+}
+
+// FUNÇÃO 2: Lê os valores do usuário
+// Recebe 'lista' por referência (&) para poder modificá-la
+void lerValores(vector<double>& lista) {
+    double vl;
+    cout << "Digite valores (0.0 para parar):\n";
+
+    while(true){
+        cin >> vl;
+
+        if(vl == 0.0){
+            cout << "Entrada de dados finalizada!\n" << endl;
+            break;
+        }
+
+        // Reutilizamos a função pequena criada acima
+        if (valorExiste(lista, vl)) {
+            cout << vl << " Já está contido!.\n";
+        } else {
+            lista.push_back(vl);
+        }
+    }
+}
+
+// FUNÇÃO 3: Imprime o vetor
+// Recebe como const reference pois só vamos ler
+void imprimirVetor(const vector<double>& lista) {
+    cout << "Ordem Normal: ";
+    for(double valor : lista){
+        cout << valor << " ";
+    }
+    cout << endl;
+}
+
+// FUNÇÃO 4: Imprime reverso
+void imprimirReverso(const vector<double>& lista) {
+    cout << "Ordem Reversa: ";
+    // Usando iteradores reversos
+    for(auto it = lista.rbegin(); it != lista.rend(); ++it){
+        cout << *it << " ";
+    }
+    cout << endl;
+}
+
+// FUNÇÃO 5: Encontra e imprime o maior valor
+void processarMaiorValor(const vector<double>& lista) {
+    if (lista.empty()) return; // Segurança
+
+    auto itMaior = max_element(lista.begin(), lista.end());
+    cout << "Maior valor: " << *itMaior << endl;
+}
+
+int main() {
+    vector<double> lista;
+
+    // 1. Chamada da função de leitura
+    lerValores(lista);
+
+    if(lista.empty()){
+        cout << "Nenhum valor foi inserido." << endl;
+    }
+    else{
+        // 2. Chamadas das funções de processamento e saída
+        cout << "Tamanho: " << lista.size() << endl;
+        
+        processarMaiorValor(lista);
+        imprimirVetor(lista);
+        imprimirReverso(lista);
+    }
+
+    return 0;
+}
+*/
